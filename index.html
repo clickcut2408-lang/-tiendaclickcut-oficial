@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click&Cut Store 🩷</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#ec4899',
+                            lightPink: '#fdf2f8',
+                            darkPink: '#db2777',
+                            accent: '#f472b6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-white to-pink-100 min-h-screen text-gray-800 font-sans">
+
+    <!-- Header / Banner -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-pink-100">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center border-2 border-pink-400 text-pink-600 font-bold text-lg">
+                    ✂️
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-pink-600 tracking-wide">Click&Cut Store 🩷</h1>
+                    <p class="text-xs text-gray-500 flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span> Abierto ahora • Verificado
+                    </p>
+                </div>
+            </div>
+            <div>
+                <button onclick="openAuthModal()" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-user-circle"></i> Registrarse / Ingresar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 py-6">
+
+        <!-- Welcome Banner & Balance -->
+        <div class="bg-gradient-to-r from-pink-500 to-rose-400 rounded-2xl p-6 text-white shadow-lg mb-8 relative overflow-hidden flex flex-col md:flex-row justify-between items-center">
+            <div class="relative z-10 mb-4 md:mb-0">
+                <span class="bg-white/20 text-xs px-3 py-1 rounded-full uppercase font-semibold tracking-wider">Catálogo Oficial 2026</span>
+                <h2 class="text-2xl font-bold mt-2">¡Bienvenido a Click&Cut! 🌸</h2>
+                <p class="text-pink-100 text-sm mt-1 max-w-lg">Encuentra tus streaming, apps, cursos y herramientas digitales favoritos al mejor precio. ¡Compra segura y garantizada!</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/25 flex items-center gap-4 relative z-10">
+                <div>
+                    <p class="text-xs text-pink-100">Soporte y Pedidos</p>
+                    <p class="font-bold text-sm">WhatsApp Oficial</p>
+                </div>
+                <a href="https://wa.me/528641114514" target="_blank" class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mb-8 relative max-w-xl mx-auto">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-pink-400">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            <input type="text" id="searchInput" onkeyup="searchApps()" placeholder="Buscar servicios, combos, streaming..." class="w-full pl-11 pr-4 py-3 bg-white border border-pink-200 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm">
+        </div>
+
+        <!-- Categories Grid -->
+        <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- NETFLIX -->
+            <div class="app-card bg-white rounded-2xl p-5 shadow-sm border border-pink-100 hover:shadow-md transition flex flex-col justify-between" data-name="netflix streaming series peliculas">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600 text-xl font-bold">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Netflix</h3>
+                            <span class="text-xs bg-red-50 text-red-600 px-2 py-0.5 rounded-md font-medium">Streaming</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="bg-pink-50/50 p-3 rounded-xl border border-pink-100">
+                            <p class="font-semibold text-pink-700 text-xs uppercase mb-1">🦋 Perfiles</p>
+                            <p class="text-gray-700 font-medium">🎬 <b>Normal:</b> 1M $45 | 2M $65 | 3M $82 | 12M $155</p>
+                            <p class="text-gray-700 font-medium mt-1">🎬 <b>Privado:</b> 1M $55 | 2M $69 | 3M $85</p>
+                            <p class="text-gray-700 font-medium mt-1">🎬 <b>Extra Privado Bug:</b> 1M $45 | 12M $95</p>
+                        </div>
+                        <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100">
+                            <p class="font-semibold text-amber-700 text-xs uppercase mb-1">🔥 Cuentas Completas</p>
+                            <p class="text-gray-700 font-medium">🎬 <b>Netflix Completa:</b> 1M $215</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="selectProduct('Netflix', 'Desde $45')" class="mt-4 w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-xl text-sm font-semibold transition">Pedir por WhatsApp</button>
+            </div>
+
+            <!-- DISNEY+ -->
+            <div class="app-card bg-white rounded-2xl p-5 shadow-sm border border-pink-100 hover:shadow-md transition flex flex-col justify-between" data-name="disney plus streaming">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
+                            <i class="fa-solid fa-castle"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Disney+ Premium</h3>
+                            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded-md font-medium">Streaming</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="bg-pink-50/50 p-3 rounded-xl border border-pink-100">
+                            <p class="font-semibold text-pink-700 text-xs uppercase mb-1">🦋 Perfiles</p>
+                            <p class="text-gray-700 font-medium">🏰 1M $15 | 2M $25 | 3M $32 | 12M $48</p>
+                        </div>
+                        <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100">
+                            <p class="font-semibold text-amber-700 text-xs uppercase mb-1">🔥 Cuentas Completas</p>
+                            <p class="text-gray-700 font-medium">🏰 1M $60 | 2M $82 | 3M $95 | 12M $145</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="selectProduct('Disney+ Premium', 'Desde $15')" class="mt-4 w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-xl text-sm font-semibold transition">Pedir por WhatsApp</button>
+            </div>
+
+            <!-- MAX -->
+            <div class="app-card bg-white rounded-2xl p-5 shadow-sm border border-pink-100 hover:shadow-md transition flex flex-col justify-between" data-name="max hbo hbomax streaming">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-xl font-bold">
+                            <i class="fa-solid fa-tv"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">MAX Premium</h3>
+                            <span class="text-xs bg-purple-50 text-purple-600 px-2 py-0.5 rounded-md font-medium">Streaming</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="bg-pink-50/50 p-3 rounded-xl border border-pink-100">
+                            <p class="font-semibold text-pink-700 text-xs uppercase mb-1">🦋 Perfiles</p>
+                            <p class="text-gray-700 font-medium">📺 1M $18 | 2M $27 | 3M $38 | 12M $65</p>
+                        </div>
+                        <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100">
+                            <p class="font-semibold text-amber-700 text-xs uppercase mb-1">🔥 Cuentas Completas</p>
+                            <p class="text-gray-700 font-medium">📺 1M $45 | 2M $59 | 3M $78 | 12M $120</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="selectProduct('MAX Premium', 'Desde $18')" class="mt-4 w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-xl text-sm font-semibold transition">Pedir por WhatsApp</button>
+            </div>
+
+            <!-- PRIME VIDEO -->
+            <div class="app-card bg-white rounded-2xl p-5 shadow-sm border border-pink-100 hover:shadow-md transition flex flex-col justify-between" data-name="prime video amazon">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center text-sky-600 text-xl font-bold">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Prime Video</h3>
+                            <span class="text-xs bg-sky-50 text-sky-600 px-2 py-0.5 rounded-md font-medium">Streaming</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="bg-pink-50/50 p-3 rounded-xl border border-pink-100">
+                            <p class="font-semibold text-pink-700 text-xs uppercase mb-1">🦋 Perfiles</p>
+                            <p class="text-gray-700 font-medium">📦 1M $15 | 2M $20 | 3M $25 | 12M $40</p>
+                        </div>
+                        <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100">
+                            <p class="font-semibold text-amber-700 text-xs uppercase mb-1">🔥 Cuentas Completas</p>
+                            <p class="text-gray-700 font-medium">📦 1M $28 | 2M $35 | 3M $45 | 12M $95</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="selectProduct('Prime Video', 'Desde $15')" class="mt-4 w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-xl text-sm font-semibold transition">Pedir por WhatsApp</button>
+            </div>
+
+            <!-- MÚSICA & AUDIO -->
+            <div class="app-card bg-white rounded-2xl p-5 shadow-sm border border-pink-100 hover:shadow-md transition flex flex-col justify-between" data-name="youtube spotify deezer apple music tidal amazon music musica">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center text-rose-600 text-xl font-bold">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Música & Streaming</h3>
+                            <span class="text-xs bg-rose-50 text-rose-600 px-2 py-0.5 rounded-md font-medium">Audio & Video</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="bg-pink-50/50 p-3 rounded-xl border border-pink-100">
+                            <p class="font-semibold text-pink-700 text-xs uppercase mb-1">▶️ YouTube</p>
+                            <p class="text-gray-700 font-medium">Invitación 1M $15 | Individual $25-$30 | Familiar $30-$35</p>
+                        </div>
+                        <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100">
+                            <p class="font-semibold text-emerald-700 text-xs uppercase mb-1">💚 Spotify & Deezer</p>
+                            <p class="text-gray-700 font-medium">Spotify 1M $38 | Anual $135<br>Deezer 1M $17 | Anual $55</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="selectProduct('Música (YouTube/Spotify)', 'Desde $15')" class="mt-4 w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-xl text-sm font-semibold transition">Pedir por WhatsApp</button>
+            </div>
+
+            <!-- DISEÑO, IA & OFFICE -->
+            <div class="app-card bg-white rounded-2xl p-5 shadow-sm border border-pink-100 hover:shadow-md transition flex flex-col justify-between" data-name="canva capcut chatgpt gemini ai ia office">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 text-xl font-bold">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-800">Diseño, IA & Office</h3>
+                            <span class="text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-md font-medium">Productividad</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="bg-pink-50/50 p-3 rounded-xl border border-pink-100">
+                            <p class="font-semibold text-pink-700 text-xs uppercase mb-1">🎨 Canva Pro</p>
+                            <p class="text-gray-700 font-medium">Invitación 1M $6 | Pro 1M $20 | 12M $70 | 24M $100</p>
+                        </div>
+                        <div class="bg-purple-50/50 p-3 rounded-xl border border-purple-100">
+                            <p class="font-semibold text-purple-700 text-xs uppercase mb-1">🤖 ChatGPT & Gemini</p>
+                            <p class="text-gray-700 font-medium">ChatGPT Go $45 | Plus $85 | Gemini 18M $60</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="selectProduct('Herramientas Digitales / IA', 'Desde $6')" class="mt-4 w-full bg-pink-100 hover:bg-pink-200 text-pink-700 py-2 rounded-xl text-sm font-semibold transition">Pedir por WhatsApp</button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-pink-100 mt-12 py-6 text-center text-sm text-gray-500">
+        <p>Click&Cut 🩷🩷 ┊ Catálogo Digital Oficial</p>
+        <p class="text-xs text-gray-400 mt-1">Todo sujeto a disponibilidad • Pregunta antes de transferir 🥰</p>
+    </footer>
+
+    <!-- REGISTRATION / CLIENT MODAL -->
+    <div id="authModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-pink-100 relative">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3 text-pink-600 text-2xl font-bold">
+                    👤
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Registro de Cliente</h3>
+                <p class="text-xs text-gray-500 mt-1">Elige tu método preferido para ingresar a la tienda.</p>
+            </div>
+
+            <!-- Login options -->
+            <div class="space-y-3 mb-5">
+                <button onclick="loginWith('Correo Electrónico')" class="w-full flex items-center justify-center gap-3 py-2.5 px-4 border border-gray-200 rounded-xl text-sm font-medium hover:bg-gray-50 transition">
+                    <i class="fa-solid fa-envelope text-pink-600"></i> Registrarse con Correo
+                </button>
+                <button onclick="loginWith('Facebook')" class="w-full flex items-center justify-center gap-3 py-2.5 px-4 bg-blue-600 text-white rounded-xl text-sm font-medium hover:bg-blue-700 transition">
+                    <i class="fa-brands fa-facebook"></i> Continuar con Facebook
+                </button>
+                <button onclick="loginWith('ID de Usuario')" class="w-full flex items-center justify-center gap-3 py-2.5 px-4 bg-gray-100 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-200 transition">
+                    <i class="fa-solid fa-id-card"></i> Usar ID de Cliente
+                </button>
+            </div>
+
+            <div class="relative flex py-2 items-center">
+                <div class="flex-grow border-t border-gray-200"></div>
+                <span class="flex-shrink mx-4 text-xs text-gray-400 uppercase font-semibold">Requisito Obligatorio</span>
+                <div class="flex-grow border-t border-gray-200"></div>
+            </div>
+
+            <!-- WhatsApp requirement input -->
+            <div class="mt-4">
+                <label class="block text-xs font-bold text-gray-700 mb-1">Número de WhatsApp (Requisito)</label>
+                <div class="flex items-center border border-pink-200 rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-pink-500">
+                    <span class="bg-pink-50 px-3 text-sm text-gray-600 font-medium">+52</span>
+                    <input type="tel" id="whatsappInput" placeholder="8641114514" class="w-full px-3 py-2.5 text-sm focus:outline-none">
+                </div>
+                <p class="text-[10px] text-gray-400 mt-1">Necesario para enviarte tus accesos y confirmaciones de pago.</p>
+            </div>
+
+            <button onclick="completeRegistration()" class="mt-6 w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-xl font-bold text-sm shadow-lg transition">
+                Completar Registro 🩷
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function openAuthModal() { document.getElementById('authModal').classList.remove('hidden'); }
+        function closeAuthModal() { document.getElementById('authModal').classList.add('hidden'); }
+        function loginWith(method) { alert(`Has seleccionado registrarte mediante ${method}. Ahora ingresa tu número de WhatsApp abajo.`); }
+        function completeRegistration() {
+            const wp = document.getElementById('whatsappInput').value;
+            if(!wp || wp.length < 8) { alert('Por favor ingresa un número de WhatsApp válido.'); return; }
+            alert('¡Registro exitoso! Ya puedes realizar tus pedidos en Click&Cut Store 🩷');
+            closeAuthModal();
+        }
+        function selectProduct(product, price) {
+            const phone = "528641114514";
+            const text = encodeURIComponent(`¡Hola Click&Cut! 🩷 Me interesa el servicio de *${product}* (${price}). ¿Me das info por favor?`);
+            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+        }
+        function searchApps() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('app-card');
+            for (let i = 0; i < cards.length; i++) {
+                let name = cards[i].getAttribute('data-name');
+                cards[i].style.display = name.includes(input) ? "flex" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
